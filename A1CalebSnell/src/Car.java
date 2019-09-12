@@ -8,8 +8,8 @@ public class Car {
 	private boolean cIsHandicapped;
 	
 	//-----CONSTRUCTORS-----//
-	// create default car with placeholder values
 	public Car() {
+	// POST: create default Car with placeholder values
 		cMake = "Testin' Larry";
 		cModel = "Testler";
 		cColor = "Testing Teal";
@@ -17,6 +17,7 @@ public class Car {
 	}
 	
 	public Car(String make, String model, String color, boolean isHandicapped) {
+	// POST: creates Car with given information
 		cMake = make;
 		cModel = model;
 		cColor = color;
