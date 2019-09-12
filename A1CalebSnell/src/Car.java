@@ -5,17 +5,64 @@ public class Car {
 	private String cMake;
 	private String cModel;
 	private String cColor;
-	private String cIsHandicapped;
+	private boolean cIsHandicapped;
 	
 	//-----CONSTRUCTORS-----//
 	// create default car with placeholder values
 	public Car() {
-		cMake = "";
-		cModel = "";
-		cColor = "";
-		cIsHandicapped = "";
+		cMake = "Testin' Larry";
+		cModel = "Testler";
+		cColor = "Testing Teal";
+		cIsHandicapped = false;
 	}
 	
+	public Car(String make, String model, String color, boolean isHandicapped) {
+		cMake = make;
+		cModel = model;
+		cColor = color;
+		cIsHandicapped = isHandicapped;
+	}
 	
+	//-----MODIFIERS-----//
+	public void setMake (String make) {
+	// POST: set make to provided data
+		cMake = make;
+	}
+	public void setModel (String model){
+	// POST: set model to provided data
+		cModel = model;
+	}
+	public void setColor (String color){
+	// POST: set color to provided data
+		cColor = color;
+	}
+	public void setIsHandicapped (boolean isHandicapped){
+	// POST: set handicapped boolean to provided data
+		cIsHandicapped = isHandicapped;
+	}
+		
+		
+		
+	//------ACCESSORS------//
+	public String getMake() {
+	// POST: returns make
+			return cMake;
+	}
+	public String getModel() {
+	// POST: returns model
+			return cModel;
+	}
+	public String getColor() {
+	// POST: returns color
+		return cColor;
+	}
+	public boolean getIsHandicapped() {
+	// POST: returns handicapped bool
+		return cIsHandicapped;
+	}
+	public String toString() {
+	// POST: returns all car info concatenated into a string
+		return(cMake + cModel + cColor);
+	}
 	
 }
