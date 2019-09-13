@@ -1,7 +1,7 @@
 
 public class ParkingSpot {
 	
-	// Private data for car and parking spot information
+	// Private objects for car and parking spot information
 	private String cMake;
 	private String cModel;
 	private String cColor;
@@ -19,7 +19,7 @@ public class ParkingSpot {
 		cHandicappedOnly = false;
 	}
 	
-	public ParkingSpot(String make, String model, String color, boolean isHandicapped, boolean handicappedOnly) {
+	public ParkingSpot(String make, String model, String color, boolean isHandicapped, boolean handicappedOnly, Car car) {
 	// POST: creates ParkingSpot with given information, also contains instance of Car
 		cMake = make;
 		cModel = model;
