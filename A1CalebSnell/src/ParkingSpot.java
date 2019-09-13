@@ -36,7 +36,7 @@ public class ParkingSpot {
 		return null;
 	}
 	public ParkingSpot setCarIsHandicapped (boolean isHandicapped){
-	// POST: set handicapped boolean to provided data
+	// POST: set handicapped boolean to provided data 
 		cCar.setIsHandicapped(isHandicapped);
 		return null;
 	}
@@ -50,7 +50,7 @@ public class ParkingSpot {
 	//------ACCESSORS------//
 	public String getCarMake() {
 	// POST: returns make
-			return cCar.getMake();
+		return cCar.getMake();
 	}
 	public String getCarModel() {
 	// POST: returns model
