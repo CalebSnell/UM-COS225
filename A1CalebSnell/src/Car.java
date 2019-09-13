@@ -10,9 +10,9 @@ public class Car {
 	//-----CONSTRUCTORS-----//
 	public Car() {
 	// POST: create default Car with placeholder values
-		cMake = "Testin' Larry";
-		cModel = "Testler";
-		cColor = "Testing Teal";
+		cMake = "None";
+		cModel = "None";
+		cColor = "None";
 		cIsHandicapped = false;
 	}
 	
