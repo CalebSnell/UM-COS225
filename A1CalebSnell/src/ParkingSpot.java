@@ -2,70 +2,67 @@
 public class ParkingSpot {
 	
 	// Private objects for car and parking spot information
-	private String cMake = "None";
-	private String cModel = "None";
-	private String cColor = "None";
-	private boolean cIsHandicapped;
 	private boolean cHandicappedOnly;
 	private Car cCar;
 	
 	//-----CONSTRUCTORS-----//
 	public ParkingSpot() {
-	// POST: create default ParkingSpot with placeholder values
-		cIsHandicapped = false;
+	// POST: create default ParkingSpot with default Ca
 		cHandicappedOnly = false;
-		cCar = new Car(cMake, cModel, cColor, cIsHandicapped);
+		cCar = new Car();
 	}
 	
 	public ParkingSpot(boolean handicappedOnly) {
-	// POST: creates ParkingSpot with given information, also contains instance of Car
+	// POST: creates ParkingSpot with given information, also contains default instance of Car
 		cHandicappedOnly = handicappedOnly;
-		cCar = new Car(cMake, cModel, cColor, cIsHandicapped);
+		cCar = new Car();
 	}
 	
 	
 	//-----MODIFIERS-----//
-	public void setMake (String make) {
+	public void setCarMake (String make) {
 	// POST: set make to provided data
-		cMake = make;
+		cCar.setMake(make);
 	}
-	public void setModel (String model){
+	public void setCarModel (String model){
 	// POST: set model to provided data
-		cModel = model;
+		cCar.setModel(model);
 	}
-	public void setColor (String color){
+	public void setCarColor (String color){
 	// POST: set color to provided data
-		cColor = color;
+		cCar.setColor(color);
 	}
-	public void setIsHandicapped (boolean isHandicapped){
+	public void setCarIsHandicapped (boolean isHandicapped){
 	// POST: set handicapped boolean to provided data
-		cIsHandicapped = isHandicapped;
+		cCar.setIsHandicapped(isHandicapped);
 	}
 	public ParkingSpot setHandicappedOnly(boolean handicappedOnly) {
+	// POST: set parking spot handicapped status
 		cHandicappedOnly = handicappedOnly;
 		return null;
 	}
 	
 	
 	//------ACCESSORS------//
-	public String getMake() {
+	public String getCarMake() {
 	// POST: returns make
-			return cMake;
+			return cCar.getMake();
 	}
-	public String getModel() {
+	public String getCarModel() {
 	// POST: returns model
-			return cModel;
+		return cCar.getModel();
 	}
-	public String getColor() {
+	public String getCarColor() {
 	// POST: returns color
-		return cColor;
+		return cCar.getColor();
 	}
-	public boolean getIsHandicapped() {
+	public boolean getCarIsHandicapped() {
 	// POST: returns handicapped bool
-		return cIsHandicapped;
+		return cCar.getIsHandicapped();
 	}
 	public boolean getHandicappedOnly() {
+	// POST: returns handicapped only bool
 		return cHandicappedOnly;
-		// POST: returns handicapped only bool
+		
 	}
 }
