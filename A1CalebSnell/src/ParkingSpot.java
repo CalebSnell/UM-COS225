@@ -2,29 +2,23 @@
 public class ParkingSpot {
 	
 	// Private objects for car and parking spot information
-	private String cMake;
-	private String cModel;
-	private String cColor;
+	private String cMake = "None";
+	private String cModel = "None";
+	private String cColor = "None";
 	private boolean cIsHandicapped;
 	private boolean cHandicappedOnly;
-	Car cCar = new Car();
+	private Car cCar;
 	
 	//-----CONSTRUCTORS-----//
 	public ParkingSpot() {
 	// POST: create default ParkingSpot with placeholder values
-		cMake = "None";
-		cModel = "None";
-		cColor = "None";
 		cIsHandicapped = false;
 		cHandicappedOnly = false;
+		cCar = new Car(cMake, cModel, cColor, cIsHandicapped);
 	}
 	
-	public ParkingSpot(String make, String model, String color, boolean isHandicapped, boolean handicappedOnly, Car car) {
+	public ParkingSpot(boolean handicappedOnly) {
 	// POST: creates ParkingSpot with given information, also contains instance of Car
-		cMake = make;
-		cModel = model;
-		cColor = color;
-		cIsHandicapped = isHandicapped;
 		cHandicappedOnly = handicappedOnly;
 		cCar = new Car(cMake, cModel, cColor, cIsHandicapped);
 	}
@@ -47,8 +41,9 @@ public class ParkingSpot {
 	// POST: set handicapped boolean to provided data
 		cIsHandicapped = isHandicapped;
 	}
-	public void setHandicappedOnly(boolean handicappedOnly) {
+	public ParkingSpot setHandicappedOnly(boolean handicappedOnly) {
 		cHandicappedOnly = handicappedOnly;
+		return null;
 	}
 	
 	
