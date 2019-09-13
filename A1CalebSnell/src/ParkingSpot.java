@@ -7,7 +7,7 @@ public class ParkingSpot {
 	
 	//-----CONSTRUCTORS-----//
 	public ParkingSpot() {
-	// POST: create default ParkingSpot with default Ca
+	// POST: create default ParkingSpot with default Car
 		cHandicappedOnly = false;
 		cCar = new Car();
 	}
@@ -20,21 +20,25 @@ public class ParkingSpot {
 	
 	
 	//-----MODIFIERS-----//
-	public void setCarMake (String make) {
+	public ParkingSpot setCarMake (String make) {
 	// POST: set make to provided data
 		cCar.setMake(make);
+		return null;
 	}
-	public void setCarModel (String model){
+	public ParkingSpot setCarModel (String model){
 	// POST: set model to provided data
 		cCar.setModel(model);
+		return null;
 	}
-	public void setCarColor (String color){
+	public ParkingSpot setCarColor (String color){
 	// POST: set color to provided data
 		cCar.setColor(color);
+		return null;
 	}
-	public void setCarIsHandicapped (boolean isHandicapped){
+	public ParkingSpot setCarIsHandicapped (boolean isHandicapped){
 	// POST: set handicapped boolean to provided data
 		cCar.setIsHandicapped(isHandicapped);
+		return null;
 	}
 	public ParkingSpot setHandicappedOnly(boolean handicappedOnly) {
 	// POST: set parking spot handicapped status
