@@ -1,3 +1,7 @@
+/* This program is designed to track your caffeine intake
+and tell you that you're drinking too much */
+// Programmed by Caleb Snell
+
 import javafx.application.*;
 import javafx.stage.*;
 import javafx.scene.*;
@@ -5,19 +9,22 @@ import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.geometry.*;
 import javafx.scene.text.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
-import javax.swing.*;
-
 
 public class CaffeineTracker extends Application
 {
     public static void main(String[] args)
     {    launch(args);    }
 
+    // Declare decimal format object to set precision to 1
+    DecimalFormat decForm = new DecimalFormat(".#");
+
     // declare stage object
     private Stage stage;
 
     // Text field objects for name of user and cups of coffee consumed
+    ArrayList<TextField> caffeineTotals = new ArrayList<TextField>()    ;
     TextField tFieldName;
     TextField tFieldCups;
 
@@ -97,7 +104,7 @@ public class CaffeineTracker extends Application
         VBox paneCenter = new VBox(20, paneCustomer, paneChoice);
         paneCenter.setPadding(new Insets(0,10, 0, 10));
 
-        // ---------- Create the bottom pane ----------
+        // Create bottom pane
         Button btnCompute = new Button("Compute");
         btnCompute.setPrefWidth(80);
         btnCompute.setOnAction(e -> btnCompute_Click() );
@@ -105,6 +112,21 @@ public class CaffeineTracker extends Application
         Button btnClear = new Button("Clear");
         btnClear.setPrefWidth(80);
         btnClear.setOnAction(e -> btnClear_Click() );
+
+        // Create output pane
+        // Creates array of TextFields that the user cannot change after display
+        for(int ct0 = 0; ct0 < 6; ct0++) {
+            TextField caffeineTotal = new TextField();
+            caffeineTotal.setEditable(false);
+            caffeineTotal.setVisible(false);
+            caffeineTotals.add(caffeineTotal);
+        }
+
+        // Displays array of TextFields
+        VBox paneOutput = new VBox(10);
+        paneOutput.getChildren().addAll(caffeineTotals);
+
+
 
         HBox paneBottom = new HBox(10, btnCompute, btnClear);
         paneBottom.setPadding(new Insets(20, 10, 20, 10));
@@ -122,8 +144,10 @@ public class CaffeineTracker extends Application
         primaryStage.show();
     }
 
-    public void btnCompute_Click()
-    {	// Create a message string with the customer information
+    public void btnCompute_Click(){
+    //POST: Compute caffeine intake, indicate levels over time
+
+        // Create a message string with the customer information
         String msg = "Results for " + tFieldName.getText() + ":";
 
         // Determine duration of caffeine intake
@@ -135,35 +159,50 @@ public class CaffeineTracker extends Application
         else
             timeframe = 2;
 
+        // Get number of cups per hour as int
+        int hrlyCups = Integer.parseInt(tFieldCups.getText());
+
+        // Add 100Mg of caffeine to total if espresso is selected
+        double hrlyCaffeineMg = hrlyCups * 130;
+        if (containsEspresso.isSelected())
+            hrlyCaffeineMg = hrlyCaffeineMg + (100 * hrlyCups);
+
+        /* Calculate total caffeine after each hour,
+         multiplying by .87 to simulate metabolism */
         double curCaffeineMg = 0;
         for (int ct1 = 0; ct1 < timeframe; ct1++){
-            curCaffeineMg = (curCaffeineMg + tFieldCups.getText());
+            curCaffeineMg = (curCaffeineMg + hrlyCaffeineMg) * 0.87;
+            caffeineTotals.get(ct1).setText(decForm.format(curCaffeineMg));
+            caffeineTotals.get(ct1).setVisible(true);
         }
 
-        // Display the message
+        // Ensure only enough text boxes are shown for the given timeframe
+        for (int ct2 = timeframe; ct2 < caffeineTotals.size(); ct2++)
+            caffeineTotals.get(ct2).setVisible(false);
+
+        // Display the message indicating caffeine consumption
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Order Details");
-        alert.setHeaderText(msg);
-        //alert.setContentText(msg);
+        alert.setTitle("Alert!");
+        alert.setHeaderText("Results for " + tFieldName.getText() + ":");
+        alert.setContentText(decForm.format(curCaffeineMg) + " milligrams after " + timeframe + " hours is way too much caffeine!");
         alert.show();
     }
 
-    private String calcCaffeine(CheckBox chk, String msg){
-        // PRE: String containing amount of caffeine taken in milligrams
-        // POST: String containing amount of caffeine after an hour
+    private void btnClear_Click(){
+    //POST: Clear data input by user
 
-        // Helper method for calculating amount of caffeine in milligrams
-        if (chk.isSelected())
-        {	if (!msg.equals(""))
-            msg += ", ";
-            msg += chk.getText();
+        // Clear all data provided by the user
+        tFieldName.clear();
+        tFieldCups.clear();
+        rdoTwoHours.setSelected(true);
+        containsEspresso.setSelected(false);
+
+        // Clear array created when computing caffeine
+        for (int ct3 = 0; ct3 < caffeineTotals.size(); ct3++){
+            caffeineTotals.get(ct3).clear();
+            caffeineTotals.get(ct3).setVisible(false);
         }
-        return msg;
-    }
 
-    private void btnClear_Click()
-    {
-        stage.close();
     }
 
 }
