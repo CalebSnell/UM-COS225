@@ -16,3 +16,5 @@ public interface Stack<T> {
     public int size ( );
     // POST: return number of elements in stack
 }
+
+// test
