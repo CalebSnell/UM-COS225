@@ -3,7 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/A2CalebSnell_jar</output-path>
     <root id="archive" name="A2CalebSnell.jar">
       <element id="module-source" name="A2CalebSnell" />
-      <element id="module-output" name="A2CalebSnell" />
     </root>
   </artifact>
 </component>
