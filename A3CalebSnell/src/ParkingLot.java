@@ -17,5 +17,14 @@ public class ParkingLot {
 
     }
 
-    public void displayReport(Car car,)
+    public void displayReport(Car car, String fee) {
+    }
+
+    public String parkingFee(String arrivalTime, String departureTime) {
+        return departureTime;
+    }
+
 }
+
+
+
