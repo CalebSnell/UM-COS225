@@ -1,4 +1,4 @@
-public class Car<T> implements Comparable<T> {
+public class Car<T> implements Comparable<String> {
     // Private data for storing car info
     private String cLicense;
     private String cArrivalTime;
@@ -54,13 +54,14 @@ public class Car<T> implements Comparable<T> {
         return(cArrivalTime + "." + cDepartureTime + " " + cLicense);
     }
 
-    public int compareTo(T license) {
+    @Override
+    public int compareTo(String license) {
         // POST: return 1 if given license is equal to stored license
-        if (license.equals(cLicense)) {
+        if (cLicense.equals(license)) {
             return 1;
         }
         else {
-            return 0;
+            return -1;
         }
 
     }
