@@ -1,18 +1,20 @@
+import java.time.LocalTime;
+
 public class Car<T> implements Comparable<String> {
     // Private data for storing car info
     private String cLicense;
-    private String cArrivalTime;
-    private String cDepartureTime;
-
+    private LocalTime cArrivalTime;
+    private LocalTime cDepartureTime;
+    ;
     //-----CONSTRUCTORS-----//
     public Car() {
         // POST: create default Car with placeholder values
         cLicense = "GUEST";
-        cArrivalTime = "00 00";
-        cDepartureTime = "24 59";
+        cArrivalTime = LocalTime.MIN;
+        cDepartureTime = LocalTime.MIN;
     }
 
-    public Car(String arrivalTime, String departureTime, String license) {
+    public Car(LocalTime arrivalTime, LocalTime departureTime, String license) {
         // POST: creates Car with given information
         cLicense = license;
         cArrivalTime = arrivalTime;
@@ -20,12 +22,12 @@ public class Car<T> implements Comparable<String> {
     }
 
     //-----MODIFIERS-----//
-    public void setArrivalTime (String arrivalTime) {
+    public void setArrivalTime (LocalTime arrivalTime) {
         // POST: set arrival time to provided data
         cArrivalTime = arrivalTime;
     }
 
-    public void setDepartureTime (String departureTime) {
+    public void setDepartureTime (LocalTime departureTime) {
         // POST: set departure time to provided data
         cDepartureTime = departureTime;
     }
@@ -36,11 +38,11 @@ public class Car<T> implements Comparable<String> {
     }
 
     //------ACCESSORS------//
-    public String getArrivalTime() {
+    public LocalTime getArrivalTime() {
         // POST: returns arrival time
         return cArrivalTime;
     }
-    public String getDepartureTime () {
+    public LocalTime getDepartureTime () {
         // POST: returns departure time
         return cDepartureTime;
     }
@@ -61,7 +63,7 @@ public class Car<T> implements Comparable<String> {
             return 1;
         }
         else {
-            return -1;
+            return 0;
         }
 
     }
