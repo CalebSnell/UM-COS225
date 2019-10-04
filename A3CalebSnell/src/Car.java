@@ -4,32 +4,24 @@ public class Car<T> implements Comparable<String> {
     // Private data for storing car info
     private String cLicense;
     private LocalTime cArrivalTime;
-    private LocalTime cDepartureTime;
     ;
     //-----CONSTRUCTORS-----//
     public Car() {
         // POST: create default Car with placeholder values
         cLicense = "GUEST";
         cArrivalTime = LocalTime.MIN;
-        cDepartureTime = LocalTime.MIN;
     }
 
-    public Car(LocalTime arrivalTime, LocalTime departureTime, String license) {
+    public Car(LocalTime arrivalTime, String license) {
         // POST: creates Car with given information
         cLicense = license;
         cArrivalTime = arrivalTime;
-        cDepartureTime = departureTime;
     }
 
     //-----MODIFIERS-----//
     public void setArrivalTime (LocalTime arrivalTime) {
         // POST: set arrival time to provided data
         cArrivalTime = arrivalTime;
-    }
-
-    public void setDepartureTime (LocalTime departureTime) {
-        // POST: set departure time to provided data
-        cDepartureTime = departureTime;
     }
 
     public void setLicense (String license) {
@@ -42,10 +34,6 @@ public class Car<T> implements Comparable<String> {
         // POST: returns arrival time
         return cArrivalTime;
     }
-    public LocalTime getDepartureTime () {
-        // POST: returns departure time
-        return cDepartureTime;
-    }
     public String getLicense() {
         // POST: returns license
         return cLicense;
@@ -53,7 +41,7 @@ public class Car<T> implements Comparable<String> {
 
     public String toString() {
         // POST: returns all car info concatenated into a string
-        return(cArrivalTime + "." + cDepartureTime + " " + cLicense);
+        return(cArrivalTime + " " + cLicense);
     }
 
     @Override
