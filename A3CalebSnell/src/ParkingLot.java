@@ -60,8 +60,6 @@ public class ParkingLot {
                     // Increment number of cars in ally, and print report
                     allyCounter++;
                     System.out.printf("%s%s%s%n", license, " parked at ", parkingSpots.peek().getArrivalTime());
-
-
                 }
                 // Report that lot is full
                 else {
@@ -77,10 +75,8 @@ public class ParkingLot {
                     parkingStreet.add(parkingSpots.pop());
                     allyCounter--;
 
-                    // Calculate meter and parking fees
+                    // Calculate meter fees
                     streetMeterFees = streetMeterFees + METER_FEE;
-                    totalParkingFees = totalParkingFees + parkingFee(parkingSpots.peek().getArrivalTime(),
-                            LocalTime.of(timeHour, timeMin), PARKING_FEE_HOURLY);
                 }
                 // Display departure report
                 System.out.printf("%s%s%s%s%s%n", parkingSpots.peek().getLicense(), " left at ",
@@ -88,16 +84,21 @@ public class ParkingLot {
                         parkingFee(parkingSpots.peek().getArrivalTime(),
                                 LocalTime.of(timeHour, timeMin), PARKING_FEE_HOURLY));
 
+                // Calculate total parking fees before car is removed
+                totalParkingFees = totalParkingFees + parkingFee(parkingSpots.peek().getArrivalTime(),
+                        LocalTime.of(timeHour, timeMin), PARKING_FEE_HOURLY);
                 // Remove requested car
                 parkingSpots.pop();
+                allyCounter--;
 
                 // Loop until metered street is empty
                 while (!parkingStreet.isEmpty()) {
                     parkingSpots.push(parkingStreet.pop());
+                    allyCounter++;
                 }
             } else {
-                System.out.println("Invalid parking status (e.g A/D)" +
-                        "or license not found (i.e thief detected)");
+                System.out.println("Invalid parking status (e.g A/D) " +
+                        "or license not found (current license: " + license + ")");
             }
         }
 
