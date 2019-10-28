@@ -1,5 +1,4 @@
 public class LinearNode<T> {
-
     private T element;                    // element
     private LinearNode<T> next;            // reference to next element
 

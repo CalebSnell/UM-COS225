@@ -1,35 +1,39 @@
-import java.io.*;
-
 public class LinkedList<T> {
-
+    // create default head and size
     LinearNode<T> cHead;
-    LinearNode<T> cTail;
     int cSize = 0;
 
     public LinkedList() {
         // POST: Create default linked list
         cHead = null;
-        cTail = null;
         cSize = 0;
     }
 
-    public void insert(T element) {
+    public void insert(T object) {
         // Create temporary linear node
-        LinearNode<T> tempHeadNode = new LinearNode(element);
-        tempHeadNode.setNext(null);
+        LinearNode<T> tempNode = new LinearNode(object);
+        LinearNode<T> curNode = cHead;
 
-        // Assign tempNode to head if linked list is empty
+        // Set head to first new object if linkedList is empty
         if (cHead == null) {
-            cHead = tempHeadNode;
-        } else {
-            LinearNode<T> tempLastNode = cHead;
-            while (tempLastNode.getNext() != null) {
-                tempLastNode = tempLastNode.getNext();
-            }
-
-            // In
-
+            cHead = new LinearNode<T>(object);
         }
+
+        // Get to last node
+        while (curNode.getNext() != null) {
+            curNode = curNode.getNext();
+        }
+
+        // Set current node next reference to new object
+        curNode.setNext(tempNode);
+
+            // Increase size
+            cSize++;
+    }
+
+    public int size () {
+    // POST: return size of linked list
+        return cSize;
     }
 }
 
