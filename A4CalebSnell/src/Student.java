@@ -88,6 +88,7 @@ public class Student {
     // Return student information
     public String toString () {
         return String.format("%s%n%s%n%s%n%s", "Name: " + getName(), "Year: " +
-                getYear(), "# of Courses: " + getClasses().size(), "Average Grade: " + getAverage());
+                getYear(), "# of Courses: " + getClasses().size(), "Average Grade: "
+                + numberToLetterGrade(getAverage()));
     }
 }
