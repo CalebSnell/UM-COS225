@@ -4,16 +4,21 @@ public class Student {
     // Private student info, including name year, classes, and grades.
     private String cName;
     private int cYear;
-    private LinkedList<String> cClasses;
-    private ArrayList<Integer> cGrades;
+    private LinkedList<String> cClasses = new LinkedList<>();
+    private ArrayList<Integer> cGrades = new ArrayList<>();
 
     //-----CONSTRUCTORS-----//
-    public Student(String name, int year, String newClass, int newGrade) {
+    public Student() {
+        setName("NONE");
+        setYear(0);
+    }
+
+    public Student(String name, int year, LinkedList<String> classes, ArrayList<Integer> grades) {
         // POST: Create student with given parameters
         setName(name);
         setYear(year);
-        addClass(newClass);
-        addGrade(newGrade);
+        addClass(classes);
+        addGrade(grades);
     }
 
     //-----MODIFIERS-----//
@@ -25,12 +30,12 @@ public class Student {
         cYear = year;
     }
 
-    public void addClass(String newClass) {
-        cClasses.insert(newClass);
+    public void addClass(LinkedList<String> classes) {
+        cClasses = classes;
     }
 
-    public void addGrade(int newGrade) {
-        cGrades.add(newGrade);
+    public void addGrade(ArrayList<Integer> grades) {
+        cGrades = grades;
     }
 
     //------ACCESSORS------//
@@ -54,10 +59,10 @@ public class Student {
     // POST: returns average between 0 - 100
         double average = 0;
         // loop through grades array list and compute average
-        for (int ct1 = 0; ct1 <= getGrades().size(); ct1++) {
-            average = average + getGrades().get(ct1);
+        for (int ct1 = 0; ct1 < getGrades().size(); ct1++) {
+            average = (average + getGrades().get(ct1));
         }
-        return average;
+        return average / getGrades().size();
     }
 
     public char numberToLetterGrade (double average) {
@@ -80,7 +85,9 @@ public class Student {
         }
     }
 
+    // Return student information
     public String toString () {
-        return getName() + " " + getYear() + " " + getClasses().size() + " " + getAverage();
+        return String.format("%s%n%s%n%s%n%s", "Name: " + getName(), "Year: " +
+                getYear(), "# of Courses: " + getClasses().size(), "Average Grade: " + getAverage());
     }
 }
