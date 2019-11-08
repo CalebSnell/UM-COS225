@@ -44,6 +44,9 @@ public class A5CalebSnell {
             customerTotal++;
         }
 
+        // Close scanner
+        fileScan.close();
+
         // Dequeue customers from waiting queue into their appropriate zone queues
         for (int ct1 = 0; ct1 < customerTotal; ct1++) {
             // Determine customer zone, enqueue appropriately
@@ -68,6 +71,7 @@ public class A5CalebSnell {
         displayZone(zoneC, MAX_ZONES, MAX_SEATS_ROW, customerTotal);
         System.out.printf("%n");
     }
+
 
     public static void displayZone(LinkedQueue<Customer> lq, int maxZones, int maxSeatsRow, int customerTotal) {
         // POST: Display contents of queue formatted appropriately
