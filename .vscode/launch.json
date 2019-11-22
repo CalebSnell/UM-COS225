@@ -1,0 +1,31 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ParkingLot",
+            "request": "launch",
+            "mainClass": "src.ParkingLot",
+            "projectName": "COS 225_fb561d1f"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ParkingTester",
+            "request": "launch",
+            "mainClass": "ParkingTester",
+            "projectName": "A1CalebSnell"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - main",
+            "request": "launch",
+            "mainClass": "main",
+            "projectName": "COS 225_fb561d1f"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - A5CalebSnell",
+            "request": "launch",
+            "mainClass": "A5CalebSnell"
+        }
+    ]
+}
