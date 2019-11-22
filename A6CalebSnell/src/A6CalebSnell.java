@@ -23,16 +23,22 @@ public class A6CalebSnell {
             morseArray[ct1] = fileScan.nextLine();
         }
 
-        System.out.println("Suggems");
+
     }
 
-    public String insertMorseChar (String[] morseChar, String[] morseArray, TreeNode<String> morseTree) {
+    public String insertMorseChar (String morseChar, String morseArray, TreeNode<String> morseTree) {
     // PRE: morseChar == a-z, morseArray (max size of 4) == 'o' or '-'
     // PRE: morseTree already has empty root
     // POST: Inserts alphabet character to tree based off morse code
 
+        // Loop for number of morse characters
+        for (int ct1 = 0; ct1 < morseArray.length(); ct1++){
+            if (morseArray.charAt(ct1) == 'o') {
+                morseTree.g
+            }
+        }
 
-        return "sugma";
+
     }
 
 }
