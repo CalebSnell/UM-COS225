@@ -1,6 +1,8 @@
 // TreeNode class
 // Written by Chris Dufour for COS 225
 
+import com.sun.source.tree.Tree;
+
 public class TreeNode<T> {
     private T element;
     private TreeNode<T> left;
@@ -43,6 +45,38 @@ public class TreeNode<T> {
             return Math.max(this.getLeft().height(), this.getRight().height()) + 1;
         }
     }
+
+    public String morse2char(TreeNode<T> root, String morseCode) {
+
+        TreeNode<T> tempNode = root;
+        String tempString = "";
+
+
+        // Catch when we've hit the end of the morse code
+        if (height() == morseCode.length()) {
+            tempString = tempString + getElement().toString();
+        }
+
+        // Recurse through until we hit the end of the morse code (see above)
+        if (morseCode.charAt(height()) == 'o') {
+            tempNode = tempNode.getLeft();
+            morse2char(tempNode, morseCode);
+        }
+        else if (morseCode.charAt(height()) == '-') {
+            tempNode = tempNode.getRight();
+            morse2char(tempNode, morseCode);
+        }
+        // Print invalid morse code if invalid morse code character
+        else{
+            System.out.println("Invalid morse code");
+        }
+
+        // should only hit this if we fail out of the recursion
+        // above with invalid morse data
+        return null;
+    }
+
+    public String string2morse(TreeNode<T>, string )
 
     //-----MODIFIERS-----//
     public void setLeft(TreeNode<T> t) {
