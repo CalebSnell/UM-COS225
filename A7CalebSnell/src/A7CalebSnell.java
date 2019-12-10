@@ -1,18 +1,22 @@
-// Organizes morse code data into a tree. Data comes from morsecode.txt
-// Programmed by Caleb Snell
+// An extension of the previous assignment, A6CalebSnell. This adds a few more functions.
+// These functions include morse to english, english to morse, and a search function.
+// Both TreeNode and the main class were reused.
+// Programemed by Caleb Snell
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class A6CalebSnell {
+public class A7CalebSnell {
     public static void main(String[] args) throws IOException {
-
         // Tree containing characters following morse pattern
         TreeNode<String> morseRoot = new TreeNode<String>();
 
         // Scanner object for scanning morse code data
         Scanner fileScan = new Scanner(new FileReader("morsecode.txt"));
+
+        // Scanner object for scanning user input
+        Scanner kbScan = new Scanner(System.in);
 
         // Loop through morse file and get alphabet characters + their respective encoding
         while (fileScan.hasNext()) {
@@ -47,19 +51,27 @@ public class A6CalebSnell {
             }
         }
 
-        // Close scanner
-        fileScan.close();
+        // User menu choice
+        String menuChoice = "";
+
+        // Get menu choice from user
+        while (menuChoice != "Q") {
+
+            // Prompt user for menu input
+            System.out.printf("%n%s%n%s%n%s%n%s%s%n%n", "Pre. Add a student",
+                    "Post. Delete a student", "T. Display a student",
+                    "R. Print average", "Q. Exit Program");
+            System.out.printf("%s", "Please enter your choice: ");
+
+            // get next operation from user
+            menuChoice = kbScan.next().toLowerCase();
+
+            if (menuChoice == "pre") {
+
+            }
 
 
-        // Print Z from tree
-        System.out.printf("%s%s%n", "Print Z from tree: ", morseRoot.getRight()
-                .getRight().getLeft().getLeft().getElement().toString());
-        // Print Q from tree
-        System.out.printf("%s%s%n", "Print Q from tree: ", morseRoot.getRight()
-                .getRight().getLeft().getRight().getElement().toString());
-        // Print R from tree
-        System.out.printf("%s%s%n", "Print R from tree: ", morseRoot.getLeft()
-                .getRight().getLeft().getElement().toString());
+        }
+
     }
-
 }
