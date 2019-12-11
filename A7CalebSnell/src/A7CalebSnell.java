@@ -51,7 +51,17 @@ public class A7CalebSnell {
             }
         }
 
-        // User menu choice
+        System.out.println(morseRoot.morse2char("o-o"));
+        System.out.println(morseRoot.morse2char("oo-"));
+
+        StringBuilder temp = new StringBuilder();
+        morseRoot.char2morse("d", temp);
+        temp = new StringBuilder();
+        morseRoot.char2morse("j", temp);
+        System.out.println(temp);
+        //System.out.println(morseRoot.char2morse('d', temp));
+
+        /* User menu choice
         String menuChoice = "";
 
         // Get menu choice from user
@@ -71,7 +81,7 @@ public class A7CalebSnell {
             }
 
 
-        }
+        }*/
 
     }
 }

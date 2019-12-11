@@ -46,37 +46,51 @@ public class TreeNode<T> {
         }
     }
 
-    public String morse2char(TreeNode<T> root, String morseCode) {
+    public String morse2char(String morseCode) {
+        //create temp node
+        TreeNode<T> temp = this;
 
-        TreeNode<T> tempNode = root;
-        String tempString = "";
+        // Loop through tree morseCode.length times
+        for (int i = 0; i < morseCode.length(); i++) {
 
-
-        // Catch when we've hit the end of the morse code
-        if (height() == morseCode.length()) {
-            tempString = tempString + getElement().toString();
+            // if 'o' get the left node
+            if (morseCode.charAt(i) == 'o') {
+                temp = temp.getLeft();
+            }
+            // if '-' get left node
+            else {
+                temp = temp.getRight();
+            }
         }
+        // Return current element once above loop is done
+        return temp.getElement().toString();
 
-        // Recurse through until we hit the end of the morse code (see above)
-        if (morseCode.charAt(height()) == 'o') {
-            tempNode = tempNode.getLeft();
-            morse2char(tempNode, morseCode);
-        }
-        else if (morseCode.charAt(height()) == '-') {
-            tempNode = tempNode.getRight();
-            morse2char(tempNode, morseCode);
-        }
-        // Print invalid morse code if invalid morse code character
-        else{
-            System.out.println("Invalid morse code");
-        }
-
-        // should only hit this if we fail out of the recursion
-        // above with invalid morse data
-        return null;
     }
 
-    public String string2morse(TreeNode<T>, string )
+    public void char2morse(String key, StringBuilder morseCode) {
+
+        // Check for valid element
+        if (this.getElement() != null) {
+            // Check for if requested key is current element, print if so
+            if (this.getElement().equals(key)) {
+                System.out.println(morseCode);
+            }
+        }
+
+        // Go left if not null, go right if null
+        if (this.getLeft() != null) {
+            morseCode.append("o");
+            this.getLeft().char2morse(key, morseCode);
+            morseCode.deleteCharAt(morseCode.length() - 1);
+        }
+        if (this.getRight() != null) {
+            morseCode.append("-");
+            this.getRight().char2morse(key, morseCode);
+            morseCode.deleteCharAt(morseCode.length() - 1);
+        }
+
+
+    }
 
     //-----MODIFIERS-----//
     public void setLeft(TreeNode<T> t) {
