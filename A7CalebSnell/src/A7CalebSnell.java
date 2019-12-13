@@ -5,23 +5,17 @@
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class A7CalebSnell {
     public static void main(String[] args) throws IOException {
         // Tree containing characters following morse pattern
-        TreeNode<Character> morseRoot = new TreeNode<Character>();
+        TreeNode<Character> morseRoot = new TreeNode<>();
 
-        // Scanner object for scanning morse code data
+        // Scanner object for scanning morse code data from file
         Scanner fileScan = new Scanner(new FileReader("morsecode.txt"));
-
         // Scanner object for scanning user input
         Scanner kbScan = new Scanner(System.in).useDelimiter("\\n");
-        // Scanner object for scanning user input with pipes
-        Scanner kbScanPipe = new Scanner(System.in).useDelimiter("\\|");
 
         // Loop through morse file and get alphabet characters + their respective encoding
         while (fileScan.hasNext()) {
@@ -59,7 +53,7 @@ public class A7CalebSnell {
         // User menu choice
         String menuChoice = "";
         // Get menu choice from user
-        while (menuChoice != "Q") {
+        while (!menuChoice.equals("Q")) {
 
             // Prompt user for menu input
             System.out.printf("%n%s%n%s%n%s%n%s%n%s%n%n", "Pre: Print tree in preorder",
@@ -81,7 +75,7 @@ public class A7CalebSnell {
             // translate to morse
             else if (menuChoice.contentEquals("t")) {
                 StringBuilder morseCode = new StringBuilder();
-                String key = "";
+                String key;
 
                 // Ask user for morse conversion string
                 System.out.printf("%n%s", "Please enter the string to be converted to morse: ");
@@ -103,12 +97,12 @@ public class A7CalebSnell {
                 // Add morse code segments to array
                 String temp = kbScan.next();
                 temp = temp.replaceAll("\\s+", "");
-                List<String> morseCode = Arrays.asList(temp.split("\\|"));
+                String[] morseCode = temp.split("\\|");
 
                 // Process and print morse code segments into English
                 System.out.printf("%n%s","English: ");
-                for (int ct3 = 0; ct3 < morseCode.size(); ct3++) {
-                    System.out.print(morseRoot.morse2char(morseCode.get(ct3)));
+                for (String s : morseCode) {
+                    System.out.print(morseRoot.morse2char(s));
                 }
                 System.out.println();
             }
