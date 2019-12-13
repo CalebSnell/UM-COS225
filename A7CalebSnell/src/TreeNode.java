@@ -67,13 +67,13 @@ public class TreeNode<T> {
 
     }
 
-    public void char2morse(String key, StringBuilder morseCode) {
+    public void char2morse(Character key, StringBuilder morseCode) {
 
         // Check for valid element
         if (this.getElement() != null) {
             // Check for if requested key is current element, print if so
             if (this.getElement().equals(key)) {
-                System.out.println(morseCode);
+                System.out.print(morseCode + " | ");
             }
         }
 
@@ -139,21 +139,35 @@ public class TreeNode<T> {
 
     //-------MISC-------//
     public void preorder(TreeNode<T> node) {
+        //PRE: TreeNode object of generic type
+        //POST: Prints element of each tree node in postorder
+        // Drop out of recursion when we hit a leaf node
         if (node == null) {
             return;
         }
-        System.out.println(node.getElement());
+        // Print element only if contains valid data
+        if (node.getElement() != null) {
+            System.out.println(node.getElement());
+        }
+        // Recurse through tree
         preorder(node.getLeft());
         preorder(node.getRight());
     }
 
     public void postorder(TreeNode<T> node) {
+        //PRE: TreeNode object of generic type
+        //POST: Prints element of each tree node in postorder
+        // Drop out of recursion when we hit a leaf node
         if (node == null) {
             return;
         }
+        // Print element only if contains valid data
+        if (node.getElement() != null) {
+            System.out.println(node.getElement());
+        }
+        // Recurse through tree
         postorder(node.getLeft());
         postorder(node.getRight());
-        System.out.println(node.getElement());
     }
 
 
